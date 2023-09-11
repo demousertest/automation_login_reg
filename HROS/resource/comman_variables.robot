@@ -15,3 +15,4 @@ ${logout}   //li[contains(@class,'MenuAvatar')]
 ${msg_icon}     //img[@src='/static/ic_help.9945fdef.svg']/../..
 ${right>}   //img[@src='/static/ic_arrow_right_gray.aaf9b4aa.svg']/../../../..
 ${left<}    //img[@src='/static/ic_arrow_left_gray.9356641f.svg']/../../../..
+${ul}   //ul[@class='ant-menu ant-menu-root ant-menu-inline ant-menu-light ant-pro-sider-menu']

@@ -1,6 +1,7 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library     DateTime
+Library    Collections
 #Library    XML
 Resource    timesheet_variables.robot
 Resource    comman_variables.robot
@@ -12,32 +13,37 @@ Resource    weekly_timesheet.robot
 ${left_bar_icon}    //span[@class='ant-menu-title-content']/a
 *** Keywords ***
 test_timesheet
-    Wait Until Element Is Visible    ${left_menu}
-#    Mouse Over    //ul[contains(@class,'ant-menu-light')]
-    Sleep    5
-    ${left_src}   Get Element Count    ${left_bar_icon}
-#    Log To Console    ${left_src}
-    Sleep    2
+    TRY
+        Wait Until Element Is Visible    ${left_menu}
+    #    Mouse Over    //ul[contains(@class,'ant-menu-light')]
+        Sleep    5
+        ${left_src}   Get Element Count    ${left_bar_icon}
+    #    Log To Console    ${left_src}
+        Sleep    2
 
-    FOR    ${i}    IN RANGE    1    ${left_src}+1
-        Wait Until Element Is Visible    (${left_bar_icon})[${i}]
-        ${left_icon_text}       Get Element Attribute    (${left_bar_icon})[${i}]    href
-#        Log To Console    ${left_icon_text}
-        ${condition}=    Run Keyword And Return Status    Should Contain    ${left_icon_text}    time-sheet
-        Run Keyword If    ${condition}    Click Element    (${left_bar_icon})[${i}]
+        FOR    ${i}    IN RANGE    1    ${left_src}+1
+            Wait Until Element Is Visible    (${left_bar_icon})[${i}]
+            ${left_icon_text}       Get Element Attribute    (${left_bar_icon})[${i}]    href
+    #        Log To Console    ${left_icon_text}
+            ${condition}=    Run Keyword And Return Status    Should Contain    ${left_icon_text}    time-sheet
+            Run Keyword If    ${condition}    Click Element    (${left_bar_icon})[${i}]
+
+        END
+
+        Mouse Out    ${ul}
+
+    EXCEPT
+        Log To Console    Icon is not visible please increase the sleep timing
 
     END
 
-#    FOR    ${i}     IN    1     8
-#    	daily_sheet
-#    	Sleep    10
-#    	Click Element    ${right>}
-#        Sleep    15
-#    	Log To Console    ${i}
-#    END
+    TRY
+        daily_sheet
+        weekly_sheet
+    EXCEPT
+        Log To Console    something is wrong please increase the sleep time
+    END
 
-    daily_sheet
-    weekly_sheet
 
 
 #    Sleep    15

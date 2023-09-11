@@ -22,6 +22,7 @@ weekly_sheet
     Sleep    10
     Click Element    ${right>}
     Click Element    ${right>}
+#    Click Element    ${right>}
     Sleep    10
 
     ${nub_timesheet}      Get Element Count    ${timesheet_value}
@@ -39,11 +40,11 @@ weekly_sheet
         ${open_task}=    Run Keyword And Return Status    Page Should Contain    Select Timesheet Period
         Click Element    ${week_selection}
         Sleep    3
-        Press Keys      //div[@class='ant-form-item-control-input-content']//input[@placeholder='Start date']       2023-09-18
+        Press Keys      //div[@class='ant-form-item-control-input-content']//input[@placeholder='Start date']       2023-09-25
         Press Key    //div[@class='ant-form-item-control-input-content']//input[@placeholder='Start date']    \\13
     #    Click Element    ${this_week}
         Sleep    2
-        Press Keys      //div[@class='ant-form-item-control-input-content']//input[@placeholder='End date']     2023-09-22
+        Press Keys      //div[@class='ant-form-item-control-input-content']//input[@placeholder='End date']     2023-09-29
         Press Key    //div[@class='ant-form-item-control-input-content']//input[@placeholder='End date']    \\13
 
         Sleep    5

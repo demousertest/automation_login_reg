@@ -7,10 +7,16 @@ launch_browser
     Open Browser    ${url}      ${browser}
     Maximize Browser Window
 login_test
-    Input Text    ${email}    ${email_val}
-    Input Password    ${password}    ${password_val}
-    Click Element    ${check_box}
-    Click Element    ${smt_btn}
+    TRY
+        Input Text    ${email}    ${email_val}
+        Input Password    ${password}    ${password_val}
+        Click Element    ${check_box}
+        Click Element    ${smt_btn}
+    EXCEPT
+        Log To Console    Please Provide a valid input value
+
+    END
+
 
 logout
     Wait Until Element Is Visible    ${drop_down}

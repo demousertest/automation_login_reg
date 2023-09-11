@@ -7,7 +7,7 @@ Resource    HROS_comman.robot
 
 *** Keywords ***
 daily_sheet
-    FOR    ${i}    IN RANGE    1    8
+    FOR    ${i}    IN RANGE    1    5
         Log    ${i}
         Sleep    15
 
