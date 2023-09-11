@@ -10,7 +10,7 @@ pipeline {
         stage('Run Tests Module 1') {
             steps {
                 // Module 1 tests
-                dir('C:\Users\Hemant Mahawer-3348\Desktop\all task\HROS\Test_cases') {
+                dir('C:\\Users\\Hemant Mahawer-3348\\Desktop\\all task\\HROS\\Test_cases') {
                     // Run all Robot Framework tests in the directory
                     bat 'robot *.robot'
                 }
